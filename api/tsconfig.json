@@ -1,5 +1,5 @@
 {
-  "extends": "../../../../tsconfig.compilerOption.json",
+  "extends": "../tsconfig.compilerOption.json",
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
@@ -7,6 +7,5 @@
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
     "outDir": "dist"
   },
-  "include": ["src"],
-  "references": [{ "path": "../../../api" }]
+  "include": ["src"]
 }
