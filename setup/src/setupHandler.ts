@@ -1,10 +1,11 @@
 import fs from 'fs'
+import path from 'path'
 
 import { standardAuthHandler } from '@redwoodjs/cli-helpers'
 
 import { Args } from './setup'
 
-const { version } = JSON.parse(fs.readFileSync('../package.json', 'utf-8'))
+const { version } = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8'))
 
 export const handler = async ({ force: forceArg }: Args) => {
   standardAuthHandler({
@@ -12,14 +13,14 @@ export const handler = async ({ force: forceArg }: Args) => {
     forceArg,
     provider: 'okta',
     authDecoderImport:
-      "import { oktaAuthDecoder as authDecoder } from '@redwoodjs/auth-providers-api'",
+      "import { authDecoder } from '@redwoodjs/auth-okta-api'",
     webPackages: [
       '@okta/okta-auth-js',
-      `@redwoodjs/auth-providers-web@${version}`,
+      `@redwoodjs/auth-okta-web@${version}`,
     ],
     apiPackages: [
       '@okta/jwt-verifier',
-      `@redwoodjs/auth-providers-api@${version}`,
+      `@redwoodjs/auth-okta-api@${version}`,
     ],
   })
 }
